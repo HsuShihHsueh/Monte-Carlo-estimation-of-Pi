@@ -11,16 +11,12 @@ double rand_unit_interval(){
 }
 
 double average_value_method(){
-    double tmp_array[n];
     double pi = 0;
     for(int i=0;i<n;i++){
         double tmp = rand_unit_interval();
-        tmp = 1- pow(tmp,2);
+        tmp = 1 - pow(tmp,2);
         tmp = sqrt(tmp);
-        tmp_array[i] = tmp;
-    }
-    for(int i=0;i<n;i++){
-        pi += tmp_array[i];
+        pi += tmp;
     }
     pi = 4 * pi / n;
     return pi;
