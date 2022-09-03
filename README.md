@@ -1,7 +1,7 @@
 # Monte-Carlo-estimation-of-Pi
 
 In this repo I'll use two monte Carlo method:  
-- average value  
+- average value method
 - area method 
 
 to estimation of Pi by different programming lauguage:  
