@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<script>
+var n = 1
+var n_pi = 0
+const init = setTimeout(main, 200)
+
+function main(){
+
+draw_line()
+iteration()
+}
+
+function iteration(){
+    var tmp = Math.random()
+    draw_point(tmp)
+    tmp = 1 - Math.pow(tmp,2)
+    tmp = Math.sqrt(tmp)
+    n_pi += tmp
+    document.getElementById("result").innerHTML = 4 * n_pi / n
+    n++
+    setTimeout(iteration, 200)
+}
+
+function restart(){
+n = 1
+n_pi = 0
+var c = document.getElementById("canvas1")
+var ctx = c.getContext("2d")
+ctx.clearRect(0, 0, c.width, c.height)
+var c = document.getElementById("canvas2")
+var ctx = c.getContext("2d")
+ctx.clearRect(0, 0, c.width, c.height)
+draw_line()
+}
+
+function draw_point(tmp){
+var c = document.getElementById("canvas1")
+var ctx = c.getContext("2d")
+ctx.beginPath()
+ctx.arc(200*tmp, 30, 2, 0, 2 * Math.PI)
+ctx.stroke()
+var c = document.getElementById("canvas2")
+var ctx = c.getContext("2d")
+ctx.beginPath()
+ctx.arc(200*tmp, 30, 2, 0, 2 * Math.PI)
+ctx.stroke()
+}
+
+function draw_line(){
+var c = document.getElementById("canvas1")
+var ctx = c.getContext("2d")
+// x
+ctx.moveTo(0,30);
+ctx.lineTo(200,30);
+ctx.stroke();
+ctx.moveTo(0,20);
+ctx.lineTo(0,40);
+ctx.stroke();  
+ctx.moveTo(100,20);
+ctx.lineTo(100,40);
+ctx.stroke(); 
+ctx.moveTo(200,20);
+ctx.lineTo(200,40);
+ctx.stroke();  
+ctx.fillText("0.0", 0, 50);  
+ctx.fillText("0.5", 90, 50); 
+ctx.fillText("1.0", 185, 50); 
+// \sqrt(1-x^2)
+var c = document.getElementById("canvas2");
+var ctx = c.getContext("2d");
+ctx.moveTo(0,30);
+ctx.lineTo(200,30);
+ctx.stroke();
+ctx.moveTo(0,20);
+ctx.lineTo(0,40);
+ctx.stroke();  
+ctx.moveTo(100,20);
+ctx.lineTo(100,40);
+ctx.stroke(); 
+ctx.moveTo(200,20);
+ctx.lineTo(200,40);
+ctx.stroke();  
+ctx.fillText("1.0", 0, 50);  
+ctx.fillText("0.87", 90, 50); 
+ctx.fillText("0.0", 185, 50); 
+}
+</script>    
+<body>
+    <div>
+        <img src="https://latex.codecogs.com/svg.image?x" width="10px" style="padding: 0px 20px">
+        <canvas id="canvas1" width="200" height="50">
+    </div>
+    <div>
+        <img src="https://latex.codecogs.com/svg.image?\sqrt{1-x^2}" width="50px" style="padding: 0px 0px">
+        <canvas id="canvas2" width="200" height="50"> 
+    </div>
+    <br>
+    <img src="https://latex.codecogs.com/svg.image?\frac{1}{n}\sum^{n}\sqrt{1-x^2}|_{x=[0,1]}&space;\cong&space;\int_{0}^{1}{\sqrt{1-x^2}}dx&space;=&space;\frac{\pi}{4}"><br>
+    Pi = 
+    <output id="result"></output><br><br>
+    <button type="button" onclick="restart()">Restart</button>
+</body>
+</html>
