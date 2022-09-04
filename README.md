@@ -9,7 +9,7 @@ In this repo I'll use two monte Carlo method:
 👉[demo website](https://hsushihhsueh.github.io/Monte-Carlo-estimation-of-Pi/monte_carlo_area.html)  
 
 to estimation of Pi by different programming lauguage:  
-- [go](monte_carlo.go)
+- [go](monte_carlo.go) ([parallel](monte_carlo_parallel.go))
 - [python](monte_carlo.py)
 - [C++](monte_carlo.cpp)
 - javascript: ([average](monte_carlo_average.html)) ([area](monte_carlo_area.html))
